@@ -31,58 +31,51 @@ return {
       local skull_lines = vim.split(logo, "\n")
 
       --------------------------------------------------
-      -- Gradient
-      --------------------------------------------------
-      local gradient = {
-        "#FF9A12",
-        "#F08810",
-        "#E0760E",
-        "#C85B0B",
-        "#B04008",
-        "#901C04",
-        "#7A0601",
-      }
+-- Solid Skull Color
+--------------------------------------------------
+vim.api.nvim_set_hl(0, "SkullAsciiSolid", {
+  fg = "#45BF7B",
+  bold = true,
+})
 
-      for i, color in ipairs(gradient) do
-        vim.api.nvim_set_hl(0, "SkullAscii" .. i, {
-          fg = color,
-          bold = true,
-        })
-      end
+     local header = {}
 
-      local header = {}
-
-      local function get_gradient_index(i, total_lines)
-  local percent = (i - 1) / (total_lines - 1)
-  return math.floor(percent * (#gradient - 1)) + 1
-end
-
-      local total = #skull_lines
-
-for i, line in ipairs(skull_lines) do
-  local idx = get_gradient_index(i, total)
-
+for _, line in ipairs(skull_lines) do
   table.insert(header, {
     type = "text",
     val = line,
     opts = {
       position = "center",
-      hl = "SkullAscii" .. idx,
+      hl = "SkullAsciiSolid",
     },
   })
-  end
+end
+
+--------------------------------------------------
+-- Button Color
+--------------------------------------------------
+vim.api.nvim_set_hl(0, "SkullButton", {
+  fg = "#44825F",
+  bold = true,
+})
       --------------------------------------------------
       -- Buttons
       --------------------------------------------------
      local dashboard = require("alpha.themes.dashboard")
 
      dashboard.section.buttons.val = {
-     dashboard.button("f", "🔍  Find Files", ":Telescope find_files<CR>"),
-     dashboard.button("r", "📁  Recent Files", ":Telescope oldfiles<CR>"),
-     dashboard.button("e", "🌴  Neo-tree", ":Neotree toggle<CR>"),
-     dashboard.button("l", "💤  Lazy", ":Lazy<CR>"),
+  dashboard.button("f", " Find Files", ":Telescope find_files<CR>"),
+  dashboard.button("r", "  Recent Files", ":Telescope oldfiles<CR>"),
+  dashboard.button("e", "⚡ Neo-tree", ":Neotree toggle<CR>"),
+  dashboard.button("l", "  Lazy", ":Lazy<CR>"),
 }
-      --------------------------------------------------
+
+-- Apply highlight AFTER creation
+for _, button in ipairs(dashboard.section.buttons.val) do
+  button.opts.hl = "SkullButton"
+end
+
+     --------------------------------------------------
       -- Footer
       --------------------------------------------------
       vim.api.nvim_set_hl(0, "SkullFooterGlow", {
