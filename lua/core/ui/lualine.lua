@@ -27,7 +27,7 @@ end
 
 require('lualine').setup {
   options = {
-    theme = nil,
+    theme = 'auto',
     section_separators = '',
     component_separators = '',
   },

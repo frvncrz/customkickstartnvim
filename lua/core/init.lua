@@ -80,4 +80,34 @@ vim.api.nvim_create_autocmd('TextYankPost', {
   end,
 })
 
+local function set_transparent()
+  local groups = {
+    "Normal",
+    "NormalNC",
+    "EndOfBuffer",
+    "SignColumn",
+    "VertSplit",
+    "StatusLine",
+    "StatusLineNC",
+    "TabLine",
+    "TabLineFill",
+    "WinSeparator",
+    "NormalFloat",
+    "FloatBorder",
+    "Pmenu",
+  }
+
+  for _, group in ipairs(groups) do
+    vim.api.nvim_set_hl(0, group, { bg = "none" })
+  end
+end
+
+-- Run once on startup
+set_transparent()
+
+-- Run again whenever colorscheme changes
+vim.api.nvim_create_autocmd("ColorScheme", {
+  group = vim.api.nvim_create_augroup("GhosttyTransparency", { clear = true }),
+  callback = set_transparent,
+})
 require('core.ui.colors')
