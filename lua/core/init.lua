@@ -1,5 +1,7 @@
 -- Nerd Font flag
 vim.g.have_nerd_font = true
+vim.g.python3_host_prog =
+  "/Library/Frameworks/Python.framework/Versions/3.13/bin/python3"
 
 -- ======================
 -- Editor Options
@@ -78,4 +80,4 @@ vim.api.nvim_create_autocmd('TextYankPost', {
   end,
 })
 
-require('custom.ui.colors')
+require('core.ui.colors')

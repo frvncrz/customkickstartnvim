@@ -54,6 +54,6 @@ function M.render()
 end
 
 -- Attach winbar
-vim.o.winbar = "%{%v:lua.require('custom.ui.winbar').render()%}"
+vim.o.winbar = "%{%v:lua.require('core.ui.winbar').render()%}"
 
 return M

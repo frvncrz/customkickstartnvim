@@ -8,9 +8,9 @@ return {
       vim.cmd.colorscheme("skull")
 
       -- Load your UI modules
-      require("custom.ui.colors")
-      require("custom.ui.icons")
-      require("custom.ui.winbar")
+      require("core.ui.colors")
+      require("core.ui.icons")
+      require("core.ui.winbar")
 
       -- 🔥 Skull glow gradient
       local skull_glow = {

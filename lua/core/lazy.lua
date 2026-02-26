@@ -16,7 +16,7 @@ rtp:prepend(lazypath)
 -- Setup lazy
 require('lazy').setup({
  spec = {
-    { import = "custom.plugins" },
+    { import = "core.plugins" },
   },
 
   -- NOTE: Plugins can be added via a link or github org/name. To run setup automatically, use `opts = {}`
@@ -67,7 +67,7 @@ require('lazy').setup({
       },
     },
   },
- 
+
   { -- Fuzzy Finder (files, lsp, etc)
     'nvim-telescope/telescope.nvim',
     enabled = true,
