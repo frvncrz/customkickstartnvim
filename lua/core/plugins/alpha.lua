@@ -34,7 +34,7 @@ return {
 -- Solid Skull Color
 --------------------------------------------------
 vim.api.nvim_set_hl(0, "SkullAsciiSolid", {
-  fg = "#45BF7B",
+  fg = "#FF4D4D",
   bold = true,
 })
 
